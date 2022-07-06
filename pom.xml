@@ -12,7 +12,7 @@
 	<artifactId>telegram-bot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>telegram-bot</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Telegram bot to automate the delivery service</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
