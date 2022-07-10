@@ -1,7 +1,6 @@
 package com.kaydash_dmitriy.telegrambot.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 public class OrderProduct {
@@ -10,7 +9,7 @@ public class OrderProduct {
     private Long id;
 
     @Column(nullable = false)
-    private Integer countProducts;
+    private Long countProduct;
 
     @ManyToOne
     private ClientOrder clientOrder;
@@ -26,12 +25,12 @@ public class OrderProduct {
         this.id = id;
     }
 
-    public Integer getCountProducts() {
-        return countProducts;
+    public Long getCountProduct() {
+        return countProduct;
     }
 
-    public void setCountProducts(Integer countProducts) {
-        this.countProducts = countProducts;
+    public void setCountProduct(Long countProducts) {
+        this.countProduct = countProducts;
     }
 
     public ClientOrder getClientOrder() {
