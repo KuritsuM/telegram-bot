@@ -20,7 +20,7 @@ public class Product {
     @ManyToOne
     private Category category;
 
-    public Product() {}
+    public Product() { }
 
     public Product(String name, String description, Double price, Category category) {
         this.name = name;
