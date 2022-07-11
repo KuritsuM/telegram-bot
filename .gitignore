@@ -35,3 +35,7 @@ build/
 *.cmd
 .mvn/
 mvnw
+
+task-2-test.mv.db
+task-2.lock.db
+task-2.mv.db

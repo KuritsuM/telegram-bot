@@ -5,13 +5,11 @@ import com.kaydash_dmitriy.telegrambot.entity.Category;
 import com.kaydash_dmitriy.telegrambot.entity.Product;
 import com.kaydash_dmitriy.telegrambot.repository.CategoryRepository;
 import com.kaydash_dmitriy.telegrambot.repository.ProductRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 
 @SpringBootTest(properties = {
@@ -25,17 +23,10 @@ public class FillingIn {
     @Autowired
     private ProductRepository productRepository;
 
-    private Category parent;
-
-    @BeforeEach
-    public void createParentCategory() {
-        Category category = new Category("parent", null);
-        categoryRepository.save(category);
-        this.parent = categoryRepository.findAll().get(0);
-    }
-
     @Test
     public void createTestCategoriesHierarchy() {
+        Category parent = categoryRepository.save(new Category("parent", null));
+
         Category pizzaCategory = new Category("Пицца", parent);
         Category rollsCategory = new Category("Роллы", parent);
         Category burgersCategory = new Category("Бургеры", parent);
@@ -49,52 +40,49 @@ public class FillingIn {
         createRollsCategories(rollsCategory);
         createBurgersCategories(burgersCategory);
         createDrinksCategories(drinksCategory);
-    }
 
-    @Test()
-    public void createProducts() {
-        Category gassedDrinks = categoryRepository.findByName("Газированные напитки").get(0);
+        Category someCategory = categoryRepository.findCategoryByParentIsNotNull().get(0);
 
-        createGassedDrinksProducts(gassedDrinks);
+        createGassedDrinksProducts(someCategory);
     }
 
     private void createRollsCategories(Category rollsCategory) {
-        ArrayList<Category> rolls = new ArrayList<>(Arrays.asList(
+        List<Category> rolls = List.of(
                 new Category("Классические роллы", rollsCategory),
                 new Category("Запеченные роллы", rollsCategory),
                 new Category("Сладкие роллы", rollsCategory),
                 new Category("Наборы", rollsCategory)
-        ));
+        );
 
         categoryRepository.saveAll(rolls);
     }
 
     private void createBurgersCategories(Category burgersCategory) {
-        ArrayList<Category> burgers = new ArrayList<>(Arrays.asList(
+        List<Category> burgers = List.of(
                 new Category("Классические бургеры", burgersCategory),
                 new Category("Острые бургеры", burgersCategory)
-        ));
+        );
 
         categoryRepository.saveAll(burgers);
     }
 
     private void createDrinksCategories(Category drinksCategory) {
-        ArrayList<Category> drinks = new ArrayList<>(Arrays.asList(
+        List<Category> drinks = List.of(
                 new Category("Газированные напитки", drinksCategory),
                 new Category("Энергетические напитки", drinksCategory),
                 new Category("Соки", drinksCategory),
                 new Category("Другие", drinksCategory)
-        ));
+        );
 
         categoryRepository.saveAll(drinks);
     }
 
-    private void createGassedDrinksProducts(Category gassedDrinks) {
-        ArrayList<Product> products = new ArrayList<>(Arrays.asList(
-                new Product("Кока-кола", "Газированные напиток производства CocaColaCo", 65.0, gassedDrinks),
-                new Product("Пепси", "Газированные напиток производства PepsiCo", 65.0, gassedDrinks),
-                new Product("Черноголовка", "Отечественная кока-кола (конечно!)", 75.0, gassedDrinks)
-        ));
+    private void createGassedDrinksProducts(Category someCategory) {
+        List<Product> products = List.of(
+                new Product("Example1", "Газированные напиток производства CocaColaCo", 65.0, someCategory),
+                new Product("Example2", "Газированные напиток производства PepsiCo", 65.0, someCategory),
+                new Product("Example3", "Отечественная кока-кола (конечно!)", 75.0, someCategory)
+        );
 
         productRepository.saveAll(products);
     }
