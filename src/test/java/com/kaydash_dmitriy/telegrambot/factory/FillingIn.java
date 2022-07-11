@@ -11,10 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-
 @SpringBootTest(properties = {
-        "spring.jpa.hibernate.ddl-auto=create-drop",
-        "spring.datasource.url=jdbc:h2:file:~/task-2-test;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE"
+        "spring.jpa.hibernate.ddl-auto=update",
+        "spring.datasource.url=jdbc:h2:file:~/task-3;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE"
 })
 public class FillingIn {
     @Autowired
