@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Category {
-    public Category() { }
+    public Category() {}
 
     public Category(String name, Category parent) {
         this.name = name;
