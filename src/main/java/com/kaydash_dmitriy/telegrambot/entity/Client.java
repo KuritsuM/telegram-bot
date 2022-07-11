@@ -1,7 +1,6 @@
 package com.kaydash_dmitriy.telegrambot.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 public class Client {
@@ -20,6 +19,15 @@ public class Client {
 
     @Column(nullable = false)
     private Long externalId;
+
+    public Client() { }
+
+    public Client(String fullName, String phoneNumber, String address, Long externalId) {
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.externalId = externalId;
+    }
 
     public Long getExternalId() {
         return externalId;

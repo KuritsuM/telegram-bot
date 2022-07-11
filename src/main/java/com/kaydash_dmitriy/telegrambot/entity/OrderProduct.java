@@ -17,6 +17,14 @@ public class OrderProduct {
     @ManyToOne
     private Product product;
 
+    public OrderProduct() { }
+
+    public OrderProduct(Long countProduct, ClientOrder clientOrder, Product product) {
+        this.countProduct = countProduct;
+        this.clientOrder = clientOrder;
+        this.product = product;
+    }
+
     public Long getId() {
         return id;
     }

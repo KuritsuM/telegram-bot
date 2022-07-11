@@ -1,7 +1,6 @@
 package com.kaydash_dmitriy.telegrambot.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 public class ClientOrder {
@@ -17,6 +16,14 @@ public class ClientOrder {
 
     @ManyToOne
     private Client client;
+
+    public ClientOrder() { }
+
+    public ClientOrder(Integer status, Double total, Client client) {
+        this.status = status;
+        this.total = total;
+        this.client = client;
+    }
 
     public Long getId() {
         return id;

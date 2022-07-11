@@ -4,13 +4,6 @@ import javax.persistence.*;
 
 @Entity
 public class Category {
-    public Category() { }
-
-    public Category(String name, Category parent) {
-        this.name = name;
-        this.parent = parent;
-    }
-
     @Id
     @GeneratedValue
     private Long id;
@@ -20,6 +13,13 @@ public class Category {
 
     @ManyToOne
     private Category parent;
+
+    public Category() { }
+
+    public Category(String name, Category parent) {
+        this.name = name;
+        this.parent = parent;
+    }
 
     public Long getId() {
         return id;
