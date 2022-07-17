@@ -1,7 +1,8 @@
-package com.kaydash_dmitriy.telegrambot.sevices;
+package com.kaydash_dmitriy.telegrambot.sevices.Impl;
 
 import com.kaydash_dmitriy.telegrambot.entity.Product;
 import com.kaydash_dmitriy.telegrambot.repository.ProductRepository;
+import com.kaydash_dmitriy.telegrambot.sevices.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

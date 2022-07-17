@@ -10,5 +10,9 @@ import java.util.List;
 public interface ClientOrderRepository extends JpaRepository<ClientOrder, Long> {
     List<ClientOrder> getClientOrdersByStatus(Integer status);
 
-    List<ClientOrder> getClientOrdersByClient_FullName(String fullName);
+    List<ClientOrder> getClientOrdersByClientFullName(String fullName);
+
+    List<ClientOrder> getClientOrdersByClientExternalId(Long externalId);
+
+    ClientOrder getClientOrderByClientExternalIdAndStatus(Long externalId, Integer status);
 }
